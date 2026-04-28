@@ -9,11 +9,21 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #FDFCFB; }
         .serif { font-family: 'Playfair Display', serif; }
+        
+        /* Brilho do Cabeçalho */
         .brand-glow {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
             width: 260px; height: 120px; background-color: #FFD700; opacity: 0.35;
             filter: blur(45px); border-radius: 50%; z-index: 0;
         }
+
+        /* Forma Amarela do Rodapé (Nova) */
+        .footer-glow {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 180px; height: 60px; background-color: #FFD700; opacity: 0.25;
+            filter: blur(25px); border-radius: 9999px; z-index: 0;
+        }
+
         .bottle-vector { fill: #D97706; }
         .pill-highlight {
             display: inline-block; background-color: #FFD700; color: #1C1917;
@@ -43,9 +53,18 @@
     <main id="product-list" class="max-w-md mx-auto px-6 space-y-6 pb-24">
         </main>
 
-    <footer class="py-12 bg-stone-50 text-center relative">
-        <p class="text-[9px] tracking-[0.5em] text-stone-400 font-bold uppercase">Apiário J.E</p>
-        <button onclick="openAdmin()" class="absolute right-4 bottom-4 p-2 text-stone-200">
+    <footer class="py-12 bg-stone-50 text-center relative overflow-hidden">
+        
+        <div class="relative max-w-xs mx-auto py-4">
+            <div class="footer-glow"></div>
+
+            <div class="relative z-10">
+                <p class="text-[9px] tracking-[0.5em] text-stone-500 font-bold uppercase">Apiário J.E</p>
+                <p class="text-[8px] tracking-[0.3em] text-stone-400 uppercase mt-1 font-medium">Castanhal-PA</p>
+            </div>
+        </div>
+        
+        <button onclick="openAdmin()" class="absolute right-4 bottom-4 p-2 text-stone-200 hover:text-amber-500 transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path></svg>
         </button>
     </footer>
@@ -60,20 +79,13 @@
     </div>
 
     <script>
-        /* ===========================================================
-           ABERTURA MANUAL: ESTOQUE DE EMERGÊNCIA (ALTERE AQUI)
-           Se o botão de configuração falhar, mude os números abaixo 
-           e salve o arquivo.
-           ===========================================================
-        */
         const ESTOQUE_ATUAL = {
-            "100ml": { qty: 10 },  // Mude o número 20 pela quantidade desejada
+            "100ml": { qty: 20 },
             "200ml": { qty: 15 }, 
             "500ml": { qty: 10 }, 
-            "1Litro": { qty: 10 }
+            "1Litro": { qty: 5 }
         };
 
-        // Dados de exibição originais
         const PRODUTOS = {
             "100ml": { price: "8,00", label: "Ideal para experimentar", pill: "Sugestão" },
             "200ml": { price: "14,00", label: "Perfeito para presente", pill: "Destaque" },
